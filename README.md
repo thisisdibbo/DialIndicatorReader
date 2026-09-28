@@ -1,4 +1,6 @@
-# DialIndicatorReader
+<p align="center">
+  <img src="docs/images/banner.svg" alt="DialIndicatorReader" width="840">
+</p>
 
 Read a cheap Chinese digital caliper, dial indicator or micrometer with an
 Arduino and get the measurement on your PC — live on the serial port, on a
@@ -7,6 +9,8 @@ Arduino and get the measurement on your PC — live on the serial port, on a
 These instruments all carry a 4-pin port that quietly streams the displayed
 value as a 24-bit frame at ~1.5 V logic. Two transistors shift it to 5 V and
 the Arduino does the rest.
+
+![Signal path](docs/images/block-diagram.svg)
 
 ![The reader board](docs/images/reader-board.jpg)
 
@@ -21,6 +25,8 @@ pc/
 docs/
   hardware.md                parts, level shifter, wiring, troubleshooting
   protocol.md                the 24-bit frame, timing, unit conversion
+tools/
+  make_images.py             regenerates the diagrams in docs/images
 ```
 
 ## Quick start
@@ -32,6 +38,8 @@ docs/
    `RESOLUTION` to `100` for a 0.01 mm instrument or `1000` for a 0.001 mm
    one, and flash it to the Nano.
 3. Open the serial monitor at **115200 baud**. Move the slider.
+
+![Level shifter](docs/images/wiring-diagram.svg)
 
 ```
 10.01 mm
@@ -81,6 +89,8 @@ Everything worth changing sits at the top of each sketch:
 | `IDLE_GAP_US`      | 2000    | quiet time that marks a packet boundary     |
 
 ## How it works
+
+![Packet timing](docs/images/protocol-timing.svg)
 
 The clock idles high between packets. The firmware waits for it to stay
 quiet for 2 ms, then clocks in 24 bits LSB-first, sampling DATA after each

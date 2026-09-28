@@ -26,19 +26,12 @@ side. It **inverts** the signal, which the firmware undoes.
 
 Build this twice — once for CLK, once for DATA:
 
-```
-                +5V
-                 |
-               [10k]
-                 |
-                 +-------------> Arduino D2 (CLK) / D3 (DATA)
-                 |
-                 C
- caliper  --[100k]--  B   2N2222
- CLK/DATA        E
-                 |
-                GND
-```
+![Level shifter](images/wiring-diagram.svg)
+
+The instrument's line drives the base through 100 kΩ. The collector sits at
+5 V through the 10 kΩ pull-up and is pulled to ground whenever the
+instrument's line goes high — that is where the inversion comes from. The
+Arduino reads the collector.
 
 Tie the instrument's GND to the Arduino GND. Leave the instrument's 1.5 V
 pin unconnected — it is the cell, not an input.

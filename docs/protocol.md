@@ -39,6 +39,8 @@ is bit 0.
 
 ## The 24-bit frame
 
+![Packet timing](images/protocol-timing.svg)
+
 Bits arrive **LSB first**. DATA is sampled just after the rising edge of the
 clock.
 
