@@ -1,0 +1,21 @@
+# Arduino build output
+build/
+*.hex
+*.elf
+*.bin
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logged data
+*.csv
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
